@@ -38,7 +38,7 @@ const Hero = () => {
                     words="Transforming Concepts into Seamless User Experiences"
                 />
                 <p className="text-center">
-                    Hi, I&apos;m Adrian, a Next.js Developer based in United States
+                    Hi, I&apos;m Jien, a Next.js Developer based in United States
                 </p>
 
                 <a href="#about">
