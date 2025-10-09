@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
 import { GlobeDemo } from "./grid-globe";
@@ -8,7 +6,6 @@ import Lottie from "react-lottie";
 import { useState } from "react";
 import animationData from '@/data/confetti.json'
 import { IoCopyOutline } from "react-icons/io5";
-
 
 export const BentoGrid = ({
   className,
@@ -20,8 +17,8 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
-        className,
+        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
+        className
       )}
     >
       {children}
@@ -31,29 +28,42 @@ export const BentoGrid = ({
 
 export const BentoGridItem = ({
   className,
+  id,
   title,
   description,
-  id,
   img,
   imgClassName,
   titleClassName,
   spareImg,
 }: {
   className?: string;
+  id: number;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
-  id?: number;
   img?: string;
   imgClassName?: string;
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const [copied, setCopied] = useState(false);
-  const handleCopy = () => {
-    navigator.clipboard.writeText('jienho.zheng@gmail.com');
+  const leftLists = ["ReactJS", "Express", "Typescript"];
+  const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
 
+  const [copied, setCopied] = useState(false);
+
+  const defaultOptions = {
+    loop: copied,
+    autoplay: copied,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const handleCopy = () => {
+    const text = "hsu@jsmastery.pro";
+    navigator.clipboard.writeText(text);
     setCopied(true);
-  }
+  };
 
   return (
     <div
@@ -111,14 +121,12 @@ export const BentoGridItem = ({
           </div>
 
           {id === 2 && <GlobeDemo />}
-
           {id === 3 && (
             <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              {/* tech stack lists */}
               <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                {['React.js', 'Next.js', 'Typescript'].map((item) => (
+                {leftLists.map((item, i) => (
                   <span
-                    key={item}
+                    key={i}
                     className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
                     lg:opacity-100 rounded-lg text-center bg-[#10132E]"
                   >
@@ -129,9 +137,9 @@ export const BentoGridItem = ({
               </div>
               <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
                 <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
-                {['VueJS', 'AWS', 'MongoDB'].map((item) => (
+                {rightLists.map((item, i) => (
                   <span
-                    key={item}
+                    key={i}
                     className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
                     lg:opacity-100 rounded-lg text-center bg-[#10132E]"
                   >
@@ -147,14 +155,7 @@ export const BentoGridItem = ({
                 className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
                   }`}
               >
-                <Lottie options={{
-                  loop: copied,
-                  autoplay: copied,
-                  animationData,
-                  rendererSettings: {
-                    preserveAspectRatio: 'xMidYMid slice',
-                  }
-                }}/>
+                <Lottie options={defaultOptions} height={200} width={400} />
               </div>
 
               <MagicButton
