@@ -13,30 +13,25 @@ const Hero = () => {
             <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="purple"/>
             <Spotlight className="top-40 left-80 h-[80vh] w-[50vw]" fill="blue"/>
         </div>
-
-        <div className="h-screen w-full dark:bg-black bg-white dark:bg-grid-white/[0.03] bg-grid-black/[0.2] flex items-center justify-center absolute top-0 left-0">
-            <div
-                className={cn(
-                "absolute inset-0",
-                "[background-size:20px_20px]",
-                "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
-                "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]",
-                )}
-            />
-            <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"/>
+        <div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#2d2f80_0%,_transparent_60%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_#3b1679_0%,_transparent_70%)]" />
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
         </div>
         
         <div className="flex justify-center relative my-20 z-10">
             <div className='max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center'>
                 <h2 className="uppercase tracking-widest text-sx text-center text-blue-100 max-w-100">
-                    Dynamic Web Magic with next.js
+                    A Portfolio website built on next.js
                 </h2>
-                <TextGenerateEffect
-                    className="text-center text-[40px] md:text-5xl lg:text-6xl"
-                    words="Transforming Concepts into Seamless User Experiences"
-                />
+                <div className="text-center text-[60px] md:text-5xl lg:text-6xl">
+                    <TextGenerateEffect words="Welcome to My Portfolio" />
+                    <div className="text-[36px]">
+                        <TextGenerateEffect words="My Journey as a Software Developer" />
+                    </div>
+                </div>
                 <p className="text-center">
-                    Hi, I&apos;m Jien, a Next.js Developer based in United States
+                    Hi, I&apos;m Jien, a Software Developer based in United States
                 </p>
 
                 <a href="#about">

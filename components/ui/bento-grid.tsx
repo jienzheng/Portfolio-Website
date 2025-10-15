@@ -45,8 +45,8 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
+  const leftLists = ["C++", "Java", "Python"];
+  const rightLists = ["RESTful", "Next.js", "React"];
 
   const [copied, setCopied] = useState(false);
 
@@ -58,9 +58,10 @@ export const BentoGridItem = ({
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const isId1 = Number(id) === 1;
 
   const handleCopy = () => {
-    const text = "hsu@jsmastery.pro";
+    const text = "https://www.linkedin.com/in/jienzheng";
     navigator.clipboard.writeText(text);
     setCopied(true);
   };
@@ -79,11 +80,11 @@ export const BentoGridItem = ({
     >
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute">
-          {img && (
+          {img && img.trim() !== "" && (
             <img
               src={img}
               alt={img}
-              className={cn(imgClassName, "object-cover object-center ")}
+              className={cn(imgClassName, imgClassName, "object-cover object-center transition-all duration-300", isId1 ? "h-[150%] scale-45 -translate-y-50" : "scale-100")}
             />
           )}
         </div>
@@ -111,15 +112,19 @@ export const BentoGridItem = ({
             "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
           )}
         >
-          <div className="font-sans font-extralight md:max-w-32 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
+          <div className="font-sans font-extralight md:max-w-32 md:text-xs lg:text-base text-sm z-10 text-[#C1C2D3]">
+            <div className="text-black"/>
             {description}
           </div>
           <div
-            className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10`}
+            className={cn(
+              "font-sans text-lg lg:text-3xl max-w-96 font-bold z-10",
+              isId1 ? "text-white drop-shadow-md" : "text-[#C1C2D3]"
+            )}
           >
             {title}
           </div>
-
+          
           {id === 2 && <GlobeDemo />}
           {id === 3 && (
             <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
